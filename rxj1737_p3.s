@@ -3,7 +3,7 @@
 
 main:
 	BL _scanf
-	MOV R6, R0			@n value
+	MOV R6, R0	@n value
 	BL _scanf 		
 	MOV R10, R0			@m value
 	MOV R1, R6
@@ -33,23 +33,17 @@ count_partition:
     POPEQ {PC}              @ restore stack pointer and return if equal
    
    @ELSE PART
-    SUB R1, R1, R2         @ n - m
-    PUSH {R1}
-    PUSH {R2}
-    BL count_partition                @ compute count_partitions(n - m,m)
-    MOV R4, R0
-    POP {R2}
-    POP {R1}
-    
-    SUB R2, R2, #1		@m - 1
-    PUSH {R1}
-    PUSH {R2}            
+   PUSH {R1}
+   PUSH {R2}
+   SUB R1, R1, R2  @n = n-m
+   BL count_partition                @ compute count_partitions(n - m,m)
+   POP {R2}
+   POP {R1}
+   PUSH {R0}
+   SUB R2, R2, #1  @m = m - 1
     BL count_partition		@compute partition(n, m - 1) 
-    MOV R5, R0
-    ADD R0, R4, R5
-    POP {R2}
-    POP {R1}
-    
+   POP {R4}
+   ADD R0, R0, R4 @add left and right
     POP {PC}               @ restore the stack pointer and return	
 @***********************************************************************************
 @*********************Begin of input and out functions******************************
