@@ -17,11 +17,12 @@ main:
     bl _scanf
     POP {R1}
     MOV R2, r0              @ load the denominator
-    PUSH {r1}
-    PUSH {r2}
+    PUSH {r1,r2}
     bl _printf_op
-    pop {r2}
-    pop {r1}
+    bl _divide
+    
+_divide:
+    pop {r1-r2}
     VMOV S0, R1             @ move the numerator to floating point register
     VMOV S1, R2             @ move the denominator to floating point register
     VCVT.F32.S32 S0, S0     @ convert unsigned bit representation to single float
