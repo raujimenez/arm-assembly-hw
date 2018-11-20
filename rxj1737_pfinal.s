@@ -116,5 +116,5 @@ _printf:
 .balign 4
 a:              .skip       40
 printf_str:     .asciz      "array_a[%d] = %d\n"
-notfound_str:       .ascii      "Terminating program.\n"
+notfound_str:   .ascii      "That value does not exist in the array!\n"
 printf_search:	.asciz		"ENTER A SEARCH VALUE: "
