@@ -1,13 +1,3 @@
-/******************************************************************************
-* @file array.s
-* @brief simple array declaration and iteration example
-*
-* Simple example of declaring a fixed-width array and traversing over the
-* elements for printing.
-*
-* @author Christopher D. McMurrough
-******************************************************************************/
- 
 .global main
 .func main
    
